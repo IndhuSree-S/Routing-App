@@ -1,0 +1,32 @@
+<a routerLink="../home">Home</a>
+<h1 style="color: rgb(64, 12, 113); text-align: center;">Model Driven</h1>
+<br><br>
+
+<!--Form Control-->
+<label for="name">College Name: </label>
+<input id="name" type="text" [formControl]="collegeName">
+
+
+<!--Form Group-->
+<form [formGroup]="course" (ngSubmit)="onSubmit()">
+    <label>Course Name : </label>
+    <input type="text" formControlName="courseName"><br>
+    <label>Register No : </label>
+    <input formControlName="registerNo"><br>
+    <button type="submit" [disabled]="!course.valid">Submit</button><br>
+</form>
+
+<!--Display-->
+<div [hidden]="!form">
+    <p style="text-align: center">Entered Details</p><br>
+    <p>College Name : <b>{{collegeName.value}}</b></p><br>
+    <p>Course Name : <b>{{course.value.courseName}}</b></p><br>
+    <p>Register Number : <b>{{course.value.registerNo}}</b></p><br>
+</div>
+<button (click)="allowChild()"><label>Allow Child to Message</label></button>
+<div [hidden]="allwChild">
+    <app-login-md-details (sendMessage)="message($event)"></app-login-md-details>
+    <p><b>Feedback : </b></p>
+    <p *ngIf="childMessage">{{childMessage.message}}</p>
+</div>
+<!--<button><a routerLink="login-md-details">View</a></button>-->

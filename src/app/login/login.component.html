@@ -1,0 +1,44 @@
+<div *ngIf="!employee.form">
+    <a routerLink="../home">Home</a>
+    <h1 style="color: rgb(64, 12, 113); text-align: center;">Template Driven</h1>
+    <br><br>
+    <form  #submitform = "ngForm" (ngSubmit)="register(submitform)">
+        <label>User Name : </label>
+        <input type="string" [(ngModel)]="employee.username" #usernameCtrl="ngModel" name="username" required>
+        <div *ngIf="!usernameCtrl.valid && usernameCtrl.touched">
+          <p color="danger">User Name is required</p>
+        </div>
+        <br><br>
+        <label>Email Id : </label>
+        <input type="any" [(ngModel)]="employee.emailid" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" #emailidCtrl="ngModel" name="emailid" required>
+        <!--<div *ngIf="emailidCtrl.errors && submitform.submitted && !emailidCtrl.valid" [ngClass] = "'error'">
+          <div *ngIf="!emailidCtrl.valid && emailidCtrl.touched">
+            <p color="danger">Email Id is required</p>
+          </div>
+        </div>-->
+        <br><br>
+        <label color="dark">Mobile Number : </label>
+        <input pattern='^((\\+91-?)|0)?[6-9]{1}[0-9]{9}$' required [(ngModel)]="employee.mobilenumber" #mobilenumberCtrl="ngModel" name="mobilenumber">
+        <!--<div *ngIf="mobilenumberCtrl.errors && submitform.submitted && !mobilenumberCtrl.valid" [ngClass] = "'error'">
+          <div *ngIf="mobilenumberCtrl.errors"]>
+            <p color="danger">Mobile Number is required</p>
+          </div>
+        </div>-->
+        <br><br>
+        <button (click)="setTrue()" class="submit" type="submit" [disabled]="!submitform.form.valid">
+          Submit
+        </button>
+        <!--<a routerLink="form1">
+          <button (click)="setTrue()" class="submit" type="submit" [disabled]="!submitform.form.valid">
+            Submit
+          </button>
+        </a>-->
+        <br><br>
+        <!--<a routerLink="./form2">Form 2</a>-->
+       
+    </form>
+</div>
+
+
+<app-login-details *ngIf="employee.form" [parentMessage]="employee"></app-login-details><br>
+

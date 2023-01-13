@@ -1,0 +1,16 @@
+<a routerLink="../home">Home</a>
+<h1 style="color: rgb(5, 85, 30); text-align: center;">Template Driven - Login Details</h1>
+<br><br>
+<label><b>Message from Parent</b> </label>
+<br><br>
+<div *ngIf="parentMessage.username">
+    <p >Hello {{parentMessage.username}} !!! </p>
+    <br><br>
+    <p>You have registered through {{parentMessage.emailid}}</p>
+    <br><br>
+    <p>Mobile Number - {{parentMessage.mobilenumber}}</p>
+</div>
+<br>
+<hr><br>
+
+
